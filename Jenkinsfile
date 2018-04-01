@@ -2,6 +2,7 @@ pipeline {
   agent any
   stages {
     stage('stage1') {
+
       parallel {
         stage('stage1a') {
           steps {
