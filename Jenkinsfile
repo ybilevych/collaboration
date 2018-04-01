@@ -1,19 +1,14 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'maven:3-alpine'
+    }
+    
+  }
   stages {
-    stage('stage1') {
-
-      parallel {
-        stage('stage1a') {
-          steps {
-            echo 'Stage1a'
-          }
-        }
-        stage('Stage1b') {
-          steps {
-            echo 'Stage1b'
-          }
-        }
+    stage('Build') {
+      steps {
+        bat(script: 'mvn -B -DskipTests clean package', returnStatus: true, returnStdout: true)
       }
     }
     stage('stage2') {
@@ -35,9 +30,9 @@ pipeline {
         }
       }
     }
-    stage('stage3') {
+    stage('Test') {
       steps {
-        echo 'hello3'
+        bat 'mvn clean package'
       }
     }
   }
