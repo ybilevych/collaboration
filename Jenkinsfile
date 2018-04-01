@@ -7,13 +7,32 @@ pipeline {
       }
     }
     stage('Test') {
+      parallel {
+        stage('Functional test') {
+          steps {
+            bat 'mvn clean package'
+          }
+        }
+        stage('UI test') {
+          steps {
+            echo 'UI tests'
+          }
+        }
+        stage('Performance Tests') {
+          steps {
+            echo 'Performance Tests'
+          }
+        }
+      }
+    }
+    stage('Make decision') {
       steps {
-        bat 'mvn clean package'
+        input(message: 'Can deploy?', ok: 'Yes')
       }
     }
     stage('Deploy') {
       steps {
-        bat 'echo Deploy'
+        echo 'Deploy'
       }
     }
   }
