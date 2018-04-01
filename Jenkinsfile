@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'h'
-    }
-    
-  }
+  agent any
   stages {
     stage('stage1') {
       steps {
