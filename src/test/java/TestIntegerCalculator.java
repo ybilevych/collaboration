@@ -14,4 +14,9 @@ public class TestIntegerCalculator {
     public void testDivision() {
         Assert.assertEquals(3, IntegerCalculator.divide(6, 2));
     }
+    @Test
+    public void testSummFail() {
+        Assert.assertEquals(3, IntegerCalculator.summ(6, 2));
+    }
+
 }
