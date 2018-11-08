@@ -16,7 +16,7 @@ public class TestIntegerCalculator {
     }
     @Test
     public void testSummFail() {
-        Assert.assertEquals(3, IntegerCalculator.summ(6, 2));
+        Assert.assertEquals(8, IntegerCalculator.summ(6, 2));
     }
 
 }
